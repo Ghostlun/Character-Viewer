@@ -8,9 +8,9 @@ protocol DetailsViewModelProtocol: AnyObject {
 
 class DetailsViewModel: DetailsViewModelProtocol {
     
-    private var data: SimpsonCharacter
+    private var data: Topic
     
-    init(data: SimpsonCharacter) {
+    init(data: Topic) {
         self.data = data
     }
     

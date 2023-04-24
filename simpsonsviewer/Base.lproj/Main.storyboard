@@ -74,8 +74,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scribble.variable" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zEt-ih-nRQ">
-                                <rect key="frame" x="16" y="143" width="382" height="259.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="zEt-ih-nRQ">
+                                <rect key="frame" x="16" y="143.5" width="382" height="260"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="Lnp-pl-Tql"/>
                                     <constraint firstAttribute="width" constant="382" id="THi-l3-k05"/>
@@ -136,7 +136,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="scribble.variable" catalog="system" width="128" height="118"/>
+        <image name="NoPhoto" width="256" height="256"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

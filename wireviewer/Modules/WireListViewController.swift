@@ -1,6 +1,6 @@
 import UIKit
 
-class ListViewController: UIViewController {
+class WireListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -9,27 +9,26 @@ class ListViewController: UIViewController {
     private lazy var viewModel = ListViewModel(delegate: self)
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let simpsonInfo = sender as? Topic else { return }
+        guard let topics = sender as? Topic else { return }
         if (segue.identifier == "OpenDetails") {
             guard let vc = segue.destination as? DetailsViewController else { return }
-            vc.inject(viewModel: DetailsViewModel(data: simpsonInfo))
+            vc.inject(viewModel: DetailsViewModel(data: topics))
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UINib(nibName: ListViewTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: ListViewTableViewCell.reuseIdentifier)
-        self.title = "Simpson Character List"
+        self.tableView.register(UINib(nibName: WireListTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: WireListTableViewCell.reuseIdentifier)
         self.loadData()
     }
     
     private func loadData() {
-        let url = "http://api.duckduckgo.com/?q=simpsons+characters&format=json"
+        let url = "http://api.duckduckgo.com/?q=the+wire+characters&format=json"
         viewModel.fetchInformation(url: url) { _ in }
     }
 }
 
-extension ListViewController: ListViewModelDelegate {
+extension WireListViewController: ListViewModelDelegate {
     func showLoader() {
         self.activityIndicatorView.startAnimating()
     }
@@ -49,15 +48,14 @@ extension ListViewController: ListViewModelDelegate {
     }
 }
 
-extension ListViewController: UISearchBarDelegate {
+extension WireListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         viewModel.handleSearch(text: searchText)
     }
 }
 
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+extension WireListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowInSection()
     }
@@ -70,7 +68,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let title = viewModel.getTitle(index: indexPath.row)
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListViewTableViewCell.reuseIdentifier, for: indexPath) as? ListViewTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WireListTableViewCell.reuseIdentifier, for: indexPath) as? WireListTableViewCell else { return UITableViewCell() }
         cell.populate(name: title)
         return cell
     }

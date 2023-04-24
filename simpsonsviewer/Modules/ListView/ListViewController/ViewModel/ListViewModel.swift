@@ -9,10 +9,9 @@ protocol ListViewModelDelegate: AnyObject {
 
 class ListViewModel {
     
-    var dataSource: [SimpsonCharacter] = []
-    private var searchedDataSource: [SimpsonCharacter] = []
+    var dataSource: [Topic] = []
+    private var searchedDataSource: [Topic] = []
     private var searchBarActive: Bool = false
-    private var url = "http://api.duckduckgo.com/?q=simpsons+characters&format=json"
     
     weak var delegate: ListViewModelDelegate?
     
@@ -24,17 +23,17 @@ class ListViewModel {
         return searchBarActive ? searchedDataSource.count : dataSource.count
     }
     
-    func getSimpsonData(index: Int) -> SimpsonCharacter {
-        return searchBarActive ? searchedDataSource[0] : dataSource[0]
+    func getTopic(index: Int) -> Topic {
+        return searchBarActive ? searchedDataSource[index] : dataSource[index]
     }
     
-    func fetchSchoolInformation(completion: @escaping (String) -> Void) {
+    func fetchInformation(url: String, completion: @escaping (String) -> Void) {
         self.delegate?.showLoader()
-        NetworkManager.manager.fetch(url: url) { [weak self](result: Result<SimpsonResponse, AppError>) in
+        NetworkManager.manager.fetch(url: url) { [weak self](result: Result<DataResponse, AppError>) in
             guard let self = self else { return }
             switch result {
             case .success(let response):
-                self.dataSource = response.simpsons
+                self.dataSource = response.relatedTopics
                 self.delegate?.reloadData()
             case .failure(let error):
                 self.delegate?.didFailWith(error: error)
@@ -43,7 +42,7 @@ class ListViewModel {
         }
     }
     
-    func getSimpsonTitle(index: Int) -> String {
+    func getTitle(index: Int) -> String {
         if !searchBarActive {
             let components = dataSource[index].text.components(separatedBy: " - ")
             return components[0]
@@ -61,7 +60,7 @@ class ListViewModel {
             searchBarActive = true
             let strippedString = text.trimmingCharacters(in: .whitespaces).lowercased()
             searchedDataSource = dataSource.filter({ item in
-                return item.text.contains(strippedString)
+                return item.text.lowercased().contains(strippedString)
             })
         }
         self.delegate?.reloadData()
