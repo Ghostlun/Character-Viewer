@@ -20,7 +20,7 @@ class DetailsViewModel: DetailsViewModelProtocol {
     }
     
     var imageUrl: String {
-        return data.firstUrl + data.icon.imgUrl
+        return "https://duckduckgo.com" + data.icon.imgUrl
     }
     
     var text: String {

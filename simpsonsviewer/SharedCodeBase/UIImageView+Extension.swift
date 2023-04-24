@@ -7,7 +7,7 @@ extension UIImageView {
     
     func downloadImage(with url: String?) {
         guard let unwrappedUrl = url, let finalUrl = URL(string: unwrappedUrl) else {
-            self.image = UIImage(named: "noPhoto")
+            self.image = UIImage(named: "NoPhoto")
             return
         }
         if let image = UIImageView.cache.getImage(for: NSString(string: unwrappedUrl)) {
