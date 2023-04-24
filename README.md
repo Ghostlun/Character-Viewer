@@ -23,7 +23,7 @@ It is a CharacterViewer using Character Api
 <p><br></p>
 
 <h3>Screen Explanation</h3>
-<h4>You can check screenShots in ScreenGif folder</h3>
+<h4>You can check screenShots in folder</h3>
 
 [List Screen]
 <div>You can check Character lists, Once you clicked. It move into next details page</div>
