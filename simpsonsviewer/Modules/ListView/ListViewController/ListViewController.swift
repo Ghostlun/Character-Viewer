@@ -24,8 +24,7 @@ class ListViewController: UIViewController {
     }
     
     private func loadData() {
-        let url = "http://api.duckduckgo.com/?q=simpsons+characters&format=json"
-        viewModel.fetchInformation(url: url) { _ in }
+        viewModel.fetchInformation(url: Environment.baseURL) { _ in }
     }
 }
 
@@ -52,7 +51,6 @@ extension ListViewController: ListViewModelDelegate {
 extension ListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         viewModel.handleSearch(text: searchText)
     }
 }

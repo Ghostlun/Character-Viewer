@@ -23,8 +23,7 @@ class WireListViewController: UIViewController {
     }
     
     private func loadData() {
-        let url = "http://api.duckduckgo.com/?q=the+wire+characters&format=json"
-        viewModel.fetchInformation(url: url) { _ in }
+        viewModel.fetchInformation(url: Environment.baseURL) { _ in }
     }
 }
 

@@ -7,7 +7,6 @@ class DetailsViewModelSpec: XCTestCase {
     
     override func setUp() {
         subject = DetailsViewModel(data: Topic(firstUrl: "firstUrl", text: "text", icon: Icon(imgUrl: "imageUrl")))
-        
         super.setUp()
     }
     

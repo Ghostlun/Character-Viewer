@@ -136,7 +136,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NoPhoto" width="256" height="256"/>
+        <image name="NoPhoto" width="108.5" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
