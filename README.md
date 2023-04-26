@@ -25,10 +25,15 @@ It is a CharacterViewer using Character Api
 <h3>Screen Explanation</h3>
 <h4>You can check screenShots in folder</h3>
 
-[List Screen]
 <div>You can check Character lists, Once you clicked. It move into next details page</div>
 
-[Details Screen]
 <div>You can check Character lists, Once you clicked. It display details page</div>
+
+<div> Simpsons View </div>
+<img src = "https://github.com/Ghostlun/Character-Viewer/blob/master/ScreenGIF/simsonView.gif" width = 200 height = 410/>
+
+
+<div> Wire View </div>
+<img src = "https://github.com/Ghostlun/Character-Viewer/blob/master/ScreenGIF/wireView.gif" width = 200 height = 410/>
 
 
